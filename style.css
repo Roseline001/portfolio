@@ -29,6 +29,7 @@ h1, h2, h3 {
     background: rgba(9, 0, 20, 0.88);
     border-bottom: 1px solid rgba(34, 211, 238, 0.15);
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(14px);
 }
 
 .navbar {
@@ -42,14 +43,21 @@ h1, h2, h3 {
 
 .logo {
     text-decoration: none;
-    font-size: 24px;
-    font-weight: bold;
+    font-family: "DM Serif Display", serif;
+    font-size: 27px;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
     color: #ffffff;
+}
+
+.logo:hover {
+    color: #22d3ee;
 }
 
 .nav-links {
     display: flex;
-    gap: 30px;
+    align-items: center;
+    gap: 35px;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -57,12 +65,30 @@ h1, h2, h3 {
 
 .nav-links a {
     text-decoration: none;
-    color: #ffffff;
+    position: relative;
+    color: #d8d2f3;
+    font-size: 14px;
+    font-weight: 500;
     transition: color 0.3s ease;
     font-family: "Inter", sans-serif;
 }
 .nav-links a:hover {
     color: #22d3ee;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+    width: 0;
+    height: 2px;
+    background: #22d3ee;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
 }
 
 /* Hero Section*/
