@@ -16,19 +16,29 @@ body {
 /*Header */
 .site-header {
     width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background: rgba(9, 0, 20, 0.88);
+    border-bottom: 1px solid rgba(34, 211, 238, 0.15);
+    backdrop-filter: blur(12px);
 }
 
 .navbar {
+    max-width: 1400px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 60px;
+    padding: 18px 60px;
 }
 
 .logo {
     text-decoration: none;
     font-size: 24px;
     font-weight: bold;
+    color: #ffffff;
 }
 
 .nav-links {
@@ -41,36 +51,60 @@ body {
 
 .nav-links a {
     text-decoration: none;
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+.nav-links a:hover {
+    color: #22d3ee;
 }
 
 /* Hero Section*/
 
 #hero {
-    min-height: 85vh;
-    padding: 80px 60px;
+    min-height: 100vh;
+    padding: 120px 60px 80px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    background-image: 
+        linear-gradient(
+            90deg,
+            rgba(9, 0, 20, 0.92) 0%,
+            rgba(9, 0, 20, 0.78) 35%,
+            rgba(9, 0, 20, 0.25) 65%,
+            rgba(9, 0, 20, 0.05) 100%
+        ),
+        url("https://res.cloudinary.com/vsm6nucc/image/upload/v1790402056/ChatGPT_Image_Sep_26_2026_08_49_31_AM.png");
+    background-size: cover;
+    background-position: center;
+    color: white;
 }
 
 .hero-content {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 80px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
 }
 
 .hero-text {
-    flex: 1;
+    max-width: 650px;
 }
 
 .hero-intro {
-    font-size: 18px;
+    color: #22d3ee;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
     margin-bottom: 15px;
 }
 
 .hero-text h1 {
-    font-size: 56px;
-    line-height: 1.1;
+    max-width: 650px;
+    font-size: 54px;
+    line-height: 1.08;
     margin: 0 0 25px;
 }
 
@@ -78,6 +112,7 @@ body {
     max-width: 600px;
     font-size: 18px;
     line-height: 1.7;
+    color: #c4b5fd;
 }
 
 .hero-actions {
@@ -90,71 +125,18 @@ body {
 .hero-button {
     padding: 13px 24px;
     text-decoration: none;
+    background: #8b5cf6;
+    color: white;
+    border-radius: 8px;
+    transition: 0.3s ease;
+}
+.hero-button:hover {
+    background: #a855f7;
 }
 
 .hero-link {
     text-decoration: none;
-}
-
-.hero-visual {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.system-card {
-    width: 360px;
-    min-height: 360px;
-    padding: 25px;
-    border-radius: 20px;
-}
-
-.system-header {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    letter-spacing: 2px;
-}
-
-.system-body {
-    min-height: 280px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.system-node {
-    padding: 15px 35px;
-    border-radius: 10px;
-}
-
-.system-line {
-    width: 2px;
-    height: 35px;
-}
-
-/* Hero Visual Design*/
-
-#hero {
-    position: relative;
-    overflow: hidden;
-    min-height: 85vh;
-    background:
-        radial-gradient(
-            circle at 75% 45%,
-            rgba(88, 28, 135, 0.35),
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 90% 80%,
-            rgba(34, 211, 238, 0.12),
-            transparent 30%
-        ),
-        #090014;
-    color: white;
+    color: #67e8f9;
 }
 
 #hero::before {
@@ -168,71 +150,7 @@ body {
     border-radius: 50%;
     filter: blur(100px);
     pointer-events: none;
-}
+} 
 
-.hero-content {
-    position: relative;
-    z-index: 1;
-}
 
-.hero-intro {
-    color: #22d3ee;
-    font-weight: bold;
-    letter-spacing: 2px;
-}
 
-.hero-text h1 {
-    color: #ffffff;
-}
-
-.hero-description {
-    color: #c4b5fd;
-}
-
-.hero-button {
-    background: #8b5cf6;
-    color: white;
-    border-radius: 8px;
-    transition: 0.3s ease;
-}
-
-.hero-button:hover {
-    background: #a855f7;
-}
-
-.hero-link {
-    color: #67e8f9;
-}
-
-.system-card {
-    position: relative;
-    background: rgba(20, 8, 35, 0.75);
-    border: 1px solid rgba(168, 85, 247, 0.35);
-    box-shadow:
-        0 0 40px rgba(139, 92, 246, 0.12);
-    backdrop-filter: blur(12px);
-}
-
-.system-header {
-    color: #a78bfa;
-}
-
-.system-header span:last-child {
-    color: #22d3ee;
-}
-
-.system-node {
-    color: #ffffff;
-    background: rgba(139, 92, 246, 0.12);
-    border: 1px solid rgba(139, 92, 246, 0.45);
-    box-shadow:
-        0 0 20px rgba(139, 92, 246, 0.12);
-}
-
-.system-line {
-    background: linear-gradient(
-        to bottom,
-        #8b5cf6,
-        #22d3ee
-    );
-}
