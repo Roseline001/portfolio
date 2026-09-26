@@ -292,6 +292,9 @@ h1, h2, h3 {
     height: 100%;
     display: block;
     object-fit: cover;
+    object-position: top center;
+    transform: scale(0.98);
+    transform-origin: top center;
     border-radius: 12px;
 }
 
