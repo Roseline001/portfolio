@@ -67,6 +67,10 @@ h1, h2, h3 {
     filter: brightness(1.25);
 }
 
+.nav-toggle {
+    display: none;
+}
+
 .nav-links {
     display: flex;
     align-items: center;
@@ -135,18 +139,22 @@ h1, h2, h3 {
 
 .hero-content {
     position: relative;
-    top: -50px;
     z-index: 2;
     width: 100%;
     max-width: 1250px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1.05fr 0.95fr;
+    grid-template-areas:
+        "text     visual"
+        "terminal visual";
     align-items: center;
-    gap: 80px;
+    column-gap: 80px;
+    row-gap: 40px;
 }
 
 .hero-text {
+    grid-area: text;
     max-width: 650px;
 }
 
@@ -329,17 +337,15 @@ h1, h2, h3 {
 /* HERO VISUAL */
 
 .hero-visual {
+    grid-area: visual;
     position: relative;
-    min-height: 520px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .hero-photo-frame {
-    position: absolute;
-    top: 30px;
-    right: 230px;
+    position: relative;
     width: 225px;
     height: 375px;
     padding: 7px;
@@ -379,12 +385,10 @@ h1, h2, h3 {
 }
 
 .terminal {
-    width: 500px;
-    position: relative;
-    left: -10%;
-    top: 320px;
-    transform: translateX(-50%);
-    height: 170px;
+    grid-area: terminal;
+    width: 100%;
+    max-width: 500px;
+    min-height: 170px;
     border: 1px solid var(--border);
     background: rgba(12, 12, 17, 0.20);
     backdrop-filter: blur(15px);
@@ -919,4 +923,275 @@ h1, h2, h3 {
     color: #625d78;
     font-family: "Inter", sans-serif;
     font-size: 11px;
+}
+
+/* RESPONSIVE */
+
+/* Small laptops */
+@media (max-width: 1100px) {
+    .navbar,
+    #hero,
+    #about,
+    #skills,
+    #projects,
+    #contact {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    .site-footer {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    .hero-content {
+        column-gap: 48px;
+    }
+
+    .about-content {
+        gap: 50px;
+    }
+
+    .contact-content {
+        gap: 60px;
+    }
+
+    .section-heading h2 {
+        font-size: 44px;
+    }
+
+    .contact-heading h2 {
+        font-size: 48px;
+    }
+}
+
+/* Tablets */
+@media (max-width: 900px) {
+    .about-content,
+    .contact-content {
+        grid-template-columns: 1fr;
+    }
+
+    .about-text {
+        max-width: none;
+    }
+
+    #skills-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Collapsed navigation and single-column hero */
+@media (max-width: 768px) {
+    .navbar {
+        position: relative;
+        padding-top: 14px;
+        padding-bottom: 14px;
+    }
+
+    .navbar.scrolled {
+        height: auto;
+    }
+
+    .nav-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 44px;
+        height: 44px;
+        padding: 10px;
+        border: 1px solid rgba(34, 211, 238, 0.25);
+        border-radius: 8px;
+        background: transparent;
+        cursor: pointer;
+    }
+
+    .nav-toggle span {
+        display: block;
+        height: 2px;
+        background: #f5f3ff;
+        border-radius: 2px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .navbar.nav-open .nav-toggle span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .navbar.nav-open .nav-toggle span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .navbar.nav-open .nav-toggle span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px 40px 16px;
+        background: rgba(9, 0, 20, 0.96);
+        border-bottom: 1px solid rgba(34, 211, 238, 0.15);
+    }
+
+    .navbar.nav-open .nav-links {
+        display: flex;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 14px 0;
+    }
+
+    #hero {
+        padding-top: 110px;
+        padding-bottom: 60px;
+        background-image:
+            linear-gradient(
+                180deg,
+                rgba(9, 0, 20, 0.85) 0%,
+                rgba(9, 0, 20, 0.9) 100%
+            ),
+            url("https://res.cloudinary.com/vsm6nucc/image/upload/v1790402056/ChatGPT_Image_Sep_26_2026_08_49_31_AM.png");
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "visual"
+            "text"
+            "terminal";
+        justify-items: start;
+    }
+
+    .hero-visual {
+        justify-self: start;
+    }
+
+    .hero-photo-frame {
+        width: 180px;
+        height: 240px;
+    }
+
+    #about,
+    #skills,
+    #projects,
+    #contact {
+        min-height: 0;
+        padding-top: 90px;
+        padding-bottom: 90px;
+    }
+
+    .section-heading {
+        margin-bottom: 45px;
+    }
+
+    #projects-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Phones */
+@media (max-width: 600px) {
+    .navbar,
+    #hero,
+    #about,
+    #skills,
+    #projects,
+    #contact,
+    .site-footer {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .nav-links {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+
+    .hero-intro {
+        font-size: 11px;
+        letter-spacing: 3px;
+    }
+
+    .hero-intro::before {
+        width: 32px;
+        flex-shrink: 0;
+    }
+
+    .hero-text h1 {
+        font-size: 36px;
+    }
+
+    .hero-text h2 {
+        font-size: 24px;
+    }
+
+    .hero-description {
+        font-size: 16px;
+        line-height: 1.7;
+    }
+
+    .hero-actions {
+        flex-wrap: wrap;
+        gap: 16px 24px;
+    }
+
+    .hero-button {
+        padding-left: 0;
+    }
+
+    .section-heading h2 {
+        font-size: 34px;
+    }
+
+    .contact-heading h2 {
+        font-size: 38px;
+    }
+
+    .image-frame {
+        width: 100%;
+        max-width: 320px;
+        height: auto;
+        aspect-ratio: 32 / 38;
+    }
+
+    .about-text > p {
+        font-size: 16px;
+    }
+
+    .about-focus {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card {
+        padding: 24px;
+    }
+
+    .project-card h3 {
+        font-size: 26px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    #skills-container {
+        grid-template-columns: 1fr;
+    }
 }

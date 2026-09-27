@@ -71,3 +71,22 @@ window.addEventListener("scroll", function () {
     navbar.classList.remove("scrolled");
   }
 });
+
+const navbar = document.querySelector(".navbar");
+const navToggle = document.querySelector(".nav-toggle");
+
+function setNavOpen(open) {
+    navbar.classList.toggle("nav-open", open);
+    navToggle.setAttribute("aria-expanded", String(open));
+    navToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+}
+
+navToggle.addEventListener("click", function () {
+    setNavOpen(!navbar.classList.contains("nav-open"));
+});
+
+document.querySelectorAll(".nav-links a").forEach(function (link) {
+    link.addEventListener("click", function () {
+        setNavOpen(false);
+    });
+});
